@@ -13,11 +13,11 @@
       var $scope = this.$scope;
 
       if ($scope.$$phase || $scope.$root.$$phase) {
-        sad.setDisposable(Rx.Disposable._fixup(state(action)));
+        sad.setDisposable(Rx.Disposable._fixup(action(this, state)));
       } else {
         $scope.$apply.call(
           $scope,
-          function () { sad.setDisposable(Rx.Disposable._fixup(state(action))); }
+          function () { sad.setDisposable(Rx.Disposable._fixup(action(this, state))); }
         );
       }
     };
