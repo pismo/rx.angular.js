@@ -15,7 +15,7 @@
       if ($scope.$$phase || $scope.$root.$$phase) {
         sad.setDisposable(Rx.Disposable._fixup(action(this, state)));
       } else {
-        $scope.$apply.call(
+        $scope.$applyAsync.call(
           $scope,
           function () { sad.setDisposable(Rx.Disposable._fixup(action(this, state))); }
         );
@@ -34,7 +34,7 @@
         if ($scope.$$phase || $scope.$root.$$phase) {
           sad.setDisposable(Rx.Disposable._fixup(action(this, state)));
         } else {
-          $scope.$apply.call(
+          $scope.$applyAsync.call(
             $scope,
             function () { sad.setDisposable(Rx.Disposable._fixup(action(this, state))); }
           );
@@ -61,7 +61,7 @@
         if ($scope.$$phase || $scope.$root.$$phase) {
           s = action(s);
         } else {
-          $scope.$apply.call($scope, function () { s = action(s); });
+          $scope.$applyAsync.call($scope, function () { s = action(s); });
         }
       }, period);
 
